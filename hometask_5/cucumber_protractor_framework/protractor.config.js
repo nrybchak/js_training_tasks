@@ -2,7 +2,7 @@
 const path = require("path");
 const yargs = require("yargs").argv;
 const reporter = require('cucumber-html-reporter');
-const fs = require("fs");
+const fs = require("fs-extra");
 
 exports.config = {
     seleniumAddress: 'http://localhost:4444/wd/hub',
@@ -12,9 +12,6 @@ exports.config = {
         browserName: 'chrome',
         shardTestFiles: false,
         maxInstances: 2,
-        // chromeOptions: {
-        //     args: ["--headless", "--window-size=1280x800"]
-        // },
         version: "66.0.3359.139"
     },
     // multiCapabilities: [{
@@ -35,9 +32,9 @@ exports.config = {
     afterLaunch: function () {
         let options = {
             theme: 'bootstrap',
-            jsonDir: './output',
+            jsonDir: './execution_reports',
             // jsonFile: './output/cucumber.json',
-            output: './cucumber_report.html',
+            output: './execution_reports/cucumber_report.html',
             reportSuiteAsScenarios: true,
             launchReport: true,
             metadata: {
@@ -51,19 +48,27 @@ exports.config = {
         reporter.generate(options);
     },
     beforeLaunch: function () {
-        const dir = path.resolve("./output/");
-        console.log("Cleaning 'output' folder.");
+        const dir = path.resolve("./execution_reports/");
+        console.log("Cleaning reports folder.");
         if (!fs.existsSync(dir)) {
-            fs.mkdirSync(dir);
+             fs.mkdirSync(dir);
         } else {
-            fs.readdirSync(dir).forEach(file => fs.unlinkSync(path.resolve(dir + "/" + file)));
+             fs.readdirSync(dir).forEach(file => {
+                  let fileWithPath = path.resolve(dir + "/" + file);
+                  const stat = fs.lstatSync(fileWithPath);
+                  if(stat.isDirectory()) {
+                       fs.removeSync(fileWithPath);
+                  } else {
+                       fs.unlinkSync(fileWithPath);
+                  }
+             });
         }
     },
     cucumberOpts: {
         require: path.resolve('./step_definitions/**.js'),
         tags: [`${yargs.tag||"@smoke"}`],
         ignoreUncaughtExceptions: true,
-        format: ['json:output/cucumber.json']
+        format: ['json:execution_reports/cucumber.json']
     },
     allScriptsTimeout: 200000,
     getPageTimeout: 100000,

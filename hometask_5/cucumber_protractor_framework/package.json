@@ -1,0 +1,22 @@
+{
+  "name": "cucumber_protractor_framework",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "update": "webdriver-manager update",
+    "e2e": "protractor protractor.config.js",
+    "pre-e2e": "webdriver-manager start"
+  },
+  "dependencies": {
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "cucumber": "^4.1.0",
+    "protractor": "^5.4.1",
+    "protractor-cucumber-framework": "^4.2.0",
+    "yargs": "^9.0.1"
+  },
+  "devDependencies": {
+    "cucumber-html-reporter": "^2.0.3",
+    "eslint": "^3.13.1"
+  }
+}
