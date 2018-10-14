@@ -1,0 +1,144 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2018-10-14T07:26:16.720Z",
+    "end": "2018-10-14T07:26:26.314Z",
+    "duration": 9594,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false,
+    "passPercentClass": "success",
+    "pendingPercentClass": "danger"
+  },
+  "suites": {
+    "uuid": "2f22ca56-e419-44b3-8eeb-e16791d57bb3",
+    "title": "",
+    "fullFile": "",
+    "file": "",
+    "beforeHooks": [],
+    "afterHooks": [
+      {
+        "title": "\"after each\" hook: ret",
+        "fullTitle": "\"after each\" hook: ret",
+        "timedOut": false,
+        "duration": 0,
+        "pass": false,
+        "fail": false,
+        "pending": false,
+        "code": "if (hooks.afterEach) { \n  return hooks.afterEach();\n}",
+        "err": {},
+        "isRoot": true,
+        "uuid": "bf1ba699-831a-4a7f-87a5-11714c1ddcd8",
+        "isHook": true,
+        "skipped": false
+      }
+    ],
+    "tests": [],
+    "suites": [
+      {
+        "uuid": "eb57c8d8-79de-4a82-8ca8-2a9b15f861c6",
+        "title": "ABOUT LOCATIONS ",
+        "fullFile": "C:\\Work\\Trainings\\JSAutomation\\training\\hometasks\\hometask_4\\mocha_chai_framework\\mocha_smoke\\about_locations_spec.js",
+        "file": "\\mocha_smoke\\about_locations_spec.js",
+        "beforeHooks": [
+          {
+            "title": "\"before all\" hook: ret",
+            "fullTitle": "ABOUT LOCATIONS  \"before all\" hook: ret",
+            "timedOut": false,
+            "duration": 4,
+            "pass": false,
+            "fail": false,
+            "pending": false,
+            "code": "chai.use(chaiAsPromised);\nchai.should();",
+            "err": {},
+            "isRoot": false,
+            "uuid": "30c8ea86-5b10-4509-8d39-7c55260467c7",
+            "isHook": true,
+            "skipped": false
+          },
+          {
+            "title": "\"before each\" hook: ret",
+            "fullTitle": "ABOUT LOCATIONS  \"before each\" hook: ret",
+            "timedOut": false,
+            "duration": 3776,
+            "pass": false,
+            "fail": false,
+            "pending": false,
+            "code": "await browser.manage().deleteAllCookies();\nawait browser.get(browser.baseUrl);\nawait browser.actions().mouseMove(world.HomePage.Header.AboutButton).perform();\nawait browser.actions().click(world.HomePage.Header.AboutLocationButton).perform();",
+            "err": {},
+            "isRoot": false,
+            "uuid": "34ce52a3-05f6-497c-9586-d6eb8d655631",
+            "isHook": true,
+            "skipped": false
+          }
+        ],
+        "afterHooks": [],
+        "tests": [
+          {
+            "title": "verify text on the page is 'Exadel Locations'",
+            "fullTitle": "ABOUT LOCATIONS  verify text on the page is 'Exadel Locations'",
+            "timedOut": false,
+            "duration": 75,
+            "state": "passed",
+            "speed": "medium",
+            "pass": true,
+            "fail": false,
+            "pending": false,
+            "code": "let expect = chai.expect;\nlet header_text = await world.LocationsPage.LocationsHeader.getText();\nreturn expect(header_text).to.be.equal('Exadel locations');",
+            "err": {},
+            "isRoot": false,
+            "uuid": "330db2e4-c927-4ace-909a-8b157682f26a",
+            "isHook": false,
+            "skipped": false
+          },
+          {
+            "title": "verify Belarusian locations BREST,GOMEL,GRODNO,MINSK,VITEBSK",
+            "fullTitle": "ABOUT LOCATIONS  verify Belarusian locations BREST,GOMEL,GRODNO,MINSK,VITEBSK",
+            "timedOut": false,
+            "duration": 277,
+            "state": "passed",
+            "speed": "slow",
+            "pass": true,
+            "fail": false,
+            "pending": false,
+            "code": "let bel_data = tests_data.checkBelarusianLocationsTest;\nutils.scrollToElement(world.LocationsPage.LocationsBelarus);\nlet arrSize = bel_data.locationsEndIndex - bel_data.locationsStartIndex;\nlet belarusianLocations = [arrSize];\nfor(let i = bel_data.locationsStartIndex, j = 0; i < bel_data.locationsEndIndex; i++, j++) {\n    belarusianLocations[j] = await world.LocationsPage.LocationsList.get(i).getText();\n}\nconsole.log(belarusianLocations);\nconsole.log(bel_data.locationsNames);\nreturn Promise.resolve(belarusianLocations).should.eventually.deep.equal(bel_data.locationsNames);",
+            "err": {},
+            "isRoot": false,
+            "uuid": "c1a7fe7d-4683-4e46-9bfd-234deddc0cd3",
+            "isHook": false,
+            "skipped": false
+          }
+        ],
+        "suites": [],
+        "passes": [
+          "330db2e4-c927-4ace-909a-8b157682f26a",
+          "c1a7fe7d-4683-4e46-9bfd-234deddc0cd3"
+        ],
+        "failures": [],
+        "pending": [],
+        "skipped": [],
+        "duration": 352,
+        "root": false,
+        "rootEmpty": false,
+        "_timeout": 250000
+      }
+    ],
+    "passes": [],
+    "failures": [],
+    "pending": [],
+    "skipped": [],
+    "duration": 0,
+    "root": true,
+    "rootEmpty": true,
+    "_timeout": 250000
+  },
+  "copyrightYear": 2018
+}

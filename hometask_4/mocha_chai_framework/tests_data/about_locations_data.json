@@ -1,0 +1,13 @@
+{
+  "checkBelarusianLocationsTest" : {
+    "locationsStartIndex": 2,
+    "locationsEndIndex": 7,
+    "locationsNames": [
+      "BREST",
+      "GOMEL",
+      "GRODNO",
+      "MINSK",
+      "VITEBSK"
+    ]
+  }
+}
